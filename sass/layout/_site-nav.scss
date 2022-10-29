@@ -1,0 +1,72 @@
+.site-nav {
+    display: flex;
+
+    &__item:not(:last-child) {
+            margin-right: 50px;
+        }
+    
+    &_align_right {
+        margin-left: auto;
+    }
+}
+
+.site-nav__link {
+    display: block;
+    padding-top: 32px;
+    padding-bottom: 32px;
+
+    @include font(500, 14px, 1.14, 0.02em);
+
+    transition: color var(--transition-dur-and-func);
+
+    &_type_menu {
+            color: var(--title-text-color);
+        }
+    
+    &_type_contacts {
+        color: var(--primary-text-color);
+        display: flex;
+        align-items: center;
+    }
+
+    &:hover,
+    &:focus {
+        color: var(--accent);
+    }
+    
+    &_current {
+        position: relative;
+
+        color: var(--accent);
+    }
+
+    &_current::after {
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        left: 0;
+        bottom: 0;
+        content: '';
+        border-radius: 2px;
+        background-color: var(--accent);
+    }
+}
+
+.site-nav__icons_svg_envelope {
+    @extend %site-nav__icons;
+    width: 16px;
+    height: 12px;
+}
+
+.site-nav__icons_svg_smartphone {
+    @extend %site-nav__icons;
+    width: 10px;
+    height: 16px;
+}
+
+.site-nav__link_type_contacts:hover .site-nav__icons_svg_envelope,
+.site-nav__link_type_contacts:focus .site-nav__icons_svg_envelope,
+.site-nav__link_type_contacts:hover .site-nav__icons_svg_smartphone,
+.site-nav__link_type_contacts:focus .site-nav__icons_svg_smartphone {
+    fill: var(--accent);
+}
